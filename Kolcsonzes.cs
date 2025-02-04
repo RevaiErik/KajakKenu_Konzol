@@ -16,6 +16,8 @@ namespace KajakKenu
         public int Elvitelperc { get; set; }
         public int Visszahozatalora { get; set; }
         public int Visszahozatalperc { get; set; }
+        public int Vizentoltottora => Visszahozatalora - Elvitelora;
+        public int Vizentoltottperc => Visszahozatalperc - Elvitelperc;
 
         public Kolcsonzes(string row)
         {
@@ -28,6 +30,12 @@ namespace KajakKenu
             Elvitelperc = int.Parse(data[5]);
             Visszahozatalora = int.Parse(data[6]);
             Visszahozatalperc = int.Parse(data[7]);
+        }
+
+        //Feladat 3
+        public override string ToString()
+        {
+            return $"{Nev.Replace(" ", "")}{Hajoid}_{Vizentoltottora}:{Math.Abs(Vizentoltottperc)}";
         }
     }
 }
